@@ -1,0 +1,13 @@
+{
+  "name": "mcm-jira-sync",
+  "version": "1.0.0",
+  "description": "MC Markets CS — Jira to Firebase sync (GitHub Actions)",
+  "main": "sync.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  },
+  "private": true
+}
