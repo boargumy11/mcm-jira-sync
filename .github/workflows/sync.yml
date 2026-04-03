@@ -2,7 +2,7 @@ name: Sync Jira Tickets to Firebase
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/5 * * * *' # Runs every 5 minutes
   workflow_dispatch:
 
 jobs:
@@ -16,18 +16,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: '24'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run sync
         run: node sync.js
         env:
-          JIRA_BASE_URL:            ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL:          ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN:           ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL:             ${{ secrets.JIRA_BASE_URL }}
+          JIRA_USER_EMAIL:           ${{ secrets.JIRA_USER_EMAIL }}
+          JIRA_API_TOKEN:            ${{ secrets.JIRA_API_TOKEN }}
           JIRA_CS_ACCOUNT_IDS:      ${{ secrets.JIRA_CS_ACCOUNT_IDS }}
           FIREBASE_DATABASE_URL:    ${{ secrets.FIREBASE_DATABASE_URL }}
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
