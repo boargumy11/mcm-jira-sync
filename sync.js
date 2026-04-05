@@ -73,7 +73,7 @@ async function sync() {
   const auth = Buffer.from(`${email}:${token}`).toString("base64");
 
   const response = await fetch(
-    `${base}/rest/api/3/search?jql=${encodeURIComponent(jql)}&maxResults=100&fields=${fields}`,
+    `${base}/rest/api/3/search/jql?jql=${encodeURIComponent(jql)}&maxResults=100&fields=${fields}`,
     {
       headers: {
         Authorization: `Basic ${auth}`,
